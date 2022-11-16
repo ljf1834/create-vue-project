@@ -1,0 +1,18 @@
+import { createApp } from 'vue'
+<% if (needsPinia) { %>
+    import { createPinia } from 'pinia'
+<% } %>
+import App from './App.vue'
+<% if (needsRouter) {%>
+    import router from './router'
+<%}%>
+import './assets/main.css'
+
+const app = createApp(App)
+<% if (needsPinia) { %>
+    app.use(createPinia())
+<% } %>
+<% if (needsRouter) {%>
+    app.use(router)
+<%}%>
+app.mount('#app')
