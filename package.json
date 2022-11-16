@@ -1,11 +1,11 @@
 {
-  "name": "create-vue",
+  "name": "create-vue-project",
   "version": "0.0.0",
   "description": "An easy way to start a Vue project",
   "type": "module",
   "packageManager": "pnpm@7.0.0-rc.2",
   "bin": {
-    "create-vue": "outfile.cjs"
+    "create-vue-project": "outfile.cjs"
   },
   "files": [
     "outfile.cjs",
