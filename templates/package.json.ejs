@@ -1,11 +1,11 @@
 {
-  "name": "<%= packageName %>",
+  "name": "<%=packageName%>",
   "version": "0.0.0",
-  "description": "An easy way to start a Vue project",
+  "description": "<%=description%>",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    <% scripts.forEach(function(script){ %>
+    "<%=script.name%>": "<%=script.value%>",
+    <% }) %>
   },
   "dependencies": {
     <% package.dependencies.forEach(function(package){ %>

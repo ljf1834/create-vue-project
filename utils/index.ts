@@ -1,10 +1,13 @@
+import { readdirSync, lstatSync } from 'node:fs'
+import { resolve } from 'node:path'
+
 export function postOrderDirectoryTraverse(dir, dirCallback, fileCallback) {
-  for (const filename of fs.readdirSync(dir)) {
+  for (const filename of readdirSync(dir)) {
     if (filename === '.git') {
       continue
     }
-    const fullpath = path.resolve(dir, filename)
-    if (fs.lstatSync(fullpath).isDirectory()) {
+    const fullpath = resolve(dir, filename)
+    if (lstatSync(fullpath).isDirectory()) {
       postOrderDirectoryTraverse(fullpath, dirCallback, fileCallback)
       dirCallback(fullpath)
       continue

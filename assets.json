@@ -1,10 +1,10 @@
 {
   "base": {
-    "scripts": {
-      "dev": "vite",
-      "build": "vite build",
-      "preview": "vite preview"
-    },
+    "scripts": [
+	    {"name": "dev", "value": "vite"},
+	    {"name": "build", "value": "vite build"},
+	    {"name": "preview", "value": "vite preview"}
+    ],
     "isDependencies": {
       "vue": true,
       "@vitejs/plugin-vue": false,
@@ -37,11 +37,11 @@
     "glob": ["templates/src/stores/**/*"]
   },
   "typescript": {
-    "scripts": {
-      "build": "run-p type-check build-only",
-      "build-only": "vite build",
-      "type-check": "vue-tsc --noEmit"
-    },
+	  "scripts": [
+		  {"name": "build", "value": "run-p type-check build-only"},
+		  {"name": "build-only", "value": "vite build"},
+		  {"name": "type-check", "value": "vue-tsc --noEmit"}
+	  ],
     "isDependencies": {
       "@types/node": false,
       "npm-run-all": false,
@@ -56,9 +56,9 @@
     }
   },
   "vitest": {
-    "scripts": {
-      "test:unit": "vitest --environment jsdom --root src/"
-    },
+	  "scripts": [
+		  {"name": "test:unit", "value": "vitest --environment jsdom --root src/"}
+	  ],
     "isDependencies": {
       "@vue/test-utils": false,
       "jsdom": false,
@@ -67,19 +67,27 @@
     "glob": ["templates/src/components/__tests__/"]
   },
   "playwright": {
-    "scripts": {
-      "test:e2e": "playwright test"
-    },
+	  "scripts": [
+		  {
+			  "name": "test:e2e",
+			  "value": "playwright test"
+		  }
+	  ],
     "isDependencies": {
       "@playwright/test": false
     },
     "glob": ["templates/e2e/", "templates/playwright.config.ts"]
   },
   "cypress": {
-    "scripts": {
-      "test:e2e": "start-server-and-test preview :4173 'cypress run --e2e'",
-      "test:e2e:dev": "start-server-and-test 'vite dev --port 4173' :4173 'cypress open --e2e'"
-    },
+	  "sciprts": [
+		  {
+			  "name": "test:e2e",
+			  "value": "start-server-and-test preview :4173 'cypress run --e2e'"
+		  },{
+			  "name": "test:e2e:dev",
+			  "value": "start-server-and-test 'vite dev --port 4173' :4173 'cypress open --e2e'"
+		  }
+	  ],
     "isDependencies": {
       "cypress": false,
       "start-server-and-test": false
@@ -92,10 +100,16 @@
     ]
   },
   "cypressCT": {
-    "scripts": {
-      "test:unit": "cypress run --component",
-      "test:unit:dev": "cypress open --component"
-    },
+	  "scripts": [
+		  {
+			  "name": "test:unit",
+			  "value": "cypress run --component"
+		  },
+		  {
+			  "name": "test:unit:dev",
+			  "value": "cypress open --component"
+		  }
+	  ],
     "glob": [
       "templates/cypress/support/component-index.html",
       "templates/cypress/support/component.js"
