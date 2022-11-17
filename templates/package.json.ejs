@@ -1,0 +1,20 @@
+{
+  "name": "<%=packageName%>",
+  "version": "0.0.0",
+  "description": "<%=description%>",
+  "scripts": {
+    <% scripts.forEach(function(script){ %>
+    "<%=script.name%>": "<%=script.value%>",
+    <% }) %>
+  },
+  "dependencies": {
+    <% package.dependencies.forEach(function(package){ %>
+        "<%=package.name%>": "<%=package.version%>",
+    <% }) %>
+  },
+  "devDependencies": {
+    <% package.devDependencies.forEach(function(package){ %>
+       "<%=package.name%>": "<%=package.version%>",
+    <% }) %>
+  }
+}
