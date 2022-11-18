@@ -291,7 +291,7 @@ async function run() {
     const normalizationPath = resolve(__dirname, path)
     const targetPath = resolve(targetDir, path.replace('templates', '.'))
     ValidDirInPathExist(targetPath)
-    if (normalizationPath.endsWith('ejs')) {
+    if (normalizationPath.endsWith('.ejs')) {
       const res = await ejs.renderFile(normalizationPath, data)
       writeFileSync(
         targetPath.replace(/(\.\S+)?(\.\S+)/g, (match, p1, p2) => {
