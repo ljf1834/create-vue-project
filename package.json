@@ -3,7 +3,6 @@
 	"version": "1.0.0",
 	"description": "An easy way to start a Vue project",
 	"main": "index.js",
-	"packageManager": "pnpm@7.0.0-rc.2",
 	"scripts": {
 		"build": "node ./scripts/build.mjs"
 	},

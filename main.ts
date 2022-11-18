@@ -18,7 +18,10 @@ import ejs from 'ejs'
 import { red } from 'kolorist'
 import assets from './assets.json'
 import https from 'https'
+import util from 'node:util'
+import { exec as _exec } from 'node:child_process'
 
+const exec = util.promisify(_exec)
 interface PromptsResult {
   projectName?: string
   shouldOverwrite?: boolean
@@ -104,6 +107,9 @@ async function normalizationDependencies(dependencies) {
 }
 
 async function run() {
+  const { stdout: npmStdout, stderr: npmStderr } = await exec('npm -v')
+  const { stdout: pnpmStdout, stderr: pnpmStderr } = await exec('pnpm -v')
+  const { stdout: yarnStdout, stderr: yarnStderr } = await exec('yarn -v')
   const cwd = process.cwd()
   // possible options:
   // --default
@@ -168,9 +174,9 @@ async function run() {
         message: 'select packageManager',
         initial: 0,
         choices: (prev, answers) => [
-          { title: 'npm', value: 'npm' },
-          { title: 'yarn', value: 'yarn'},
-          { title: 'pnpm', value: 'pnpm' }
+          { title: 'npm', value: 'npm', description: `${npmStdout ? 'npm package manager' : 'uninstalled npm package manager'}`, disabled: !npmStdout },
+          { title: 'yarn', value: 'yarn', description: `${yarnStdout ? 'yarn package manager' : 'uninstalled yarn package manager'}`, disabled: !yarnStdout },
+          { title: 'pnpm', value: 'pnpm', description: `${pnpmStdout ? 'pnpm package manager' : 'uninstalled pnpm package manager'}`, disabled: !pnpmStdout }
         ]
       },
       {
