@@ -163,6 +163,17 @@ async function run() {
         onState: (state) => (String(state.value).trim())
       },
       {
+        name: 'packageManager',
+        type: 'select',
+        message: 'select packageManager',
+        initial: 0,
+        choices: (prev, answers) => [
+          { title: 'npm', value: 'npm' },
+          { title: 'yarn', value: 'yarn'},
+          { title: 'pnpm', value: 'pnpm' }
+        ]
+      },
+      {
         name: 'description',
         type: 'text',
         message: 'description:',
