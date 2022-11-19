@@ -107,7 +107,6 @@ async function normalizationDependencies(dependencies) {
 }
 
 async function run() {
-  const { stdout: npmStdout, stderr: npmStderr } = await exec('npm -v')
   const { stdout: pnpmStdout, stderr: pnpmStderr } = await exec('pnpm -v')
   const { stdout: yarnStdout, stderr: yarnStderr } = await exec('yarn -v')
   const cwd = process.cwd()
@@ -174,7 +173,7 @@ async function run() {
         message: 'select packageManager',
         initial: 0,
         choices: (prev, answers) => [
-          { title: 'npm', value: 'npm', description: `${npmStdout ? 'npm package manager' : 'uninstalled npm package manager'}`, disabled: !npmStdout },
+          { title: 'npm', value: 'npm', description: 'npm package manager' },
           { title: 'yarn', value: 'yarn', description: `${yarnStdout ? 'yarn package manager' : 'uninstalled yarn package manager'}`, disabled: !yarnStdout },
           { title: 'pnpm', value: 'pnpm', description: `${pnpmStdout ? 'pnpm package manager' : 'uninstalled pnpm package manager'}`, disabled: !pnpmStdout }
         ]
