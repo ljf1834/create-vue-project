@@ -9,13 +9,13 @@ import {
   copyFileSync,
   writeFileSync
 } from 'node:fs'
-import { resolve } from 'node:path'
+import { resolve, relative } from 'node:path'
 import minimist from 'minimist'
 import fg from 'fast-glob'
 import prompts from 'prompts'
 import { postOrderDirectoryTraverse } from './utils'
 import ejs from 'ejs'
-import { red } from 'kolorist'
+import { red, bold, green } from 'kolorist'
 import assets from './assets.json'
 import https from 'https'
 import util from 'node:util'
@@ -26,6 +26,7 @@ interface PromptsResult {
   projectName?: string
   shouldOverwrite?: boolean
   packageName?: string
+  packageManager: 'npm' | 'yarn' | 'pnpm'
   description?: string
   needsTypeScript?: boolean
   needsJsx?: boolean
@@ -172,7 +173,7 @@ async function run() {
         type: 'select',
         message: 'select packageManager',
         initial: 0,
-        choices: (prev, answers) => [
+        choices: () => [
           { title: 'npm', value: 'npm', description: 'npm package manager' },
           { title: 'yarn', value: 'yarn', description: `${yarnStdout ? 'yarn package manager' : 'uninstalled yarn package manager'}`, disabled: !yarnStdout },
           { title: 'pnpm', value: 'pnpm', description: `${pnpmStdout ? 'pnpm package manager' : 'uninstalled pnpm package manager'}`, disabled: !pnpmStdout }
@@ -323,5 +324,12 @@ async function run() {
       copyFile(normalizationPath, targetPath)
     }
   })
+
+  console.log(`\nDone. Now run:\n`)
+
+  if (targetDir !== cwd) console.log(`  ${bold(green(`cd ${relative(cwd, targetDir)}`))}`)
+  console.log(`  ${bold(green(`${ result.packageManager } install`))}`)
+  console.log(`  ${bold(green( `${ result.packageManager } dev`))}`)
+  console.log()
 }
 run()
