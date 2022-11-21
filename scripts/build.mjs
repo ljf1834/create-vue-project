@@ -1,5 +1,4 @@
 import * as esbuild from 'esbuild'
-
 await esbuild.build({
   bundle: true,
   entryPoints: ['main.ts'],
@@ -7,7 +6,7 @@ await esbuild.build({
   format: 'cjs',
   platform: 'node',
   target: 'node14',
-	watch: true,
+	watch: process.env.NODE_ENV === 'development',
 	treeShaking: true,
   plugins: [
     {
@@ -21,6 +20,4 @@ await esbuild.build({
       }
     },
   ]
-}).then(() => {
-	console.log('watching...')
 })
