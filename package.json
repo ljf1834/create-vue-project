@@ -6,7 +6,7 @@
 	"scripts": {
 		"dev": "cross-env NODE_ENV=development node ./scripts/build.mjs",
 		"build": "cross-env NODE_ENV=production node ./scripts/build.mjs",
-		"publish": "pnpm run build"
+		"publish": "pnpm run build && pnpm publish"
 	},
 	"bin": {
 		"create-vue-project": "outfile.cjs"
