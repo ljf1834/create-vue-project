@@ -211,7 +211,7 @@ async function run() {
       {
         name: 'needsPinia',
         type: () => (argv.pinia ? null : 'toggle'),
-        message: 'Add Vue Router for Single Page Application development?',
+        message: 'Add Pinia for state management?',
         initial: false,
         active: 'Yes',
         inactive: 'No'
@@ -282,6 +282,7 @@ async function run() {
   const shouldOverwrite = forceOverwrite || result.shouldOverwrite
   const projectSyntaxSuffix = result.needsTypeScript ? '.ts' : '.js'
   const globs: Array<[]> = [assets.base.glob as []]
+  console.log(`\nScaffolding project in ${targetDir}...`)
   const dependencies = await normalizationDependencies(assets.base.isDependencies)
   const data = Object.assign(Object.create(null), result, {package: dependencies}, {scripts: assets.base.scripts})
   for (let key in result) {
@@ -315,7 +316,7 @@ async function run() {
           if (p1 && p2) {
             return p1
           } else {
-            return p2 != '.ejs' ? p1 : projectSyntaxSuffix
+            return p2 != '.ejs' ? p2 : projectSyntaxSuffix
           }
         }),
         res
