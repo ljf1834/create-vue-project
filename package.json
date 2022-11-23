@@ -4,6 +4,9 @@
 	"description": "An easy way to start a Vue project",
 	"main": "index.js",
 	"scripts": {
+		"prepare": "echo 'prepare'",
+		"prepack": "echo 'prepack'",
+		"postpack": "echo 'postpack'",
 		"dev": "cross-env NODE_ENV=development node ./scripts/build.mjs",
 		"build": "cross-env NODE_ENV=production node ./scripts/build.mjs",
 		"publish": "pnpm run build && pnpm publish"
