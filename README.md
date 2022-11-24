@@ -7,3 +7,8 @@ The recommended way to start a Vite-powered Vue project
 ```sh
 npm create vue-project
 ```
+##or
+
+```sh
+npx create vue-project
+```
