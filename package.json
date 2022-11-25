@@ -1,6 +1,6 @@
 {
 	"name": "create-vue-project",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "An easy way to start a Vue project",
 	"main": "index.js",
 	"scripts": {
@@ -16,7 +16,7 @@
 	},
 	"files": [
 		"outfile.cjs",
-		"templates"
+		"template"
 	],
 	"engines": {
 		"node": "^14.18.0 || >=16.0.0"
