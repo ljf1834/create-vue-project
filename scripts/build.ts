@@ -1,5 +1,5 @@
-import * as esbuild from 'esbuild'
-await esbuild.build({
+import esbuild from 'esbuild'
+esbuild.build({
   bundle: true,
   entryPoints: ['main.ts'],
   outfile: 'outfile.cjs',

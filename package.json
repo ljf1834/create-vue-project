@@ -2,13 +2,14 @@
 	"name": "create-vue-project",
 	"version": "1.0.1",
 	"description": "An easy way to start a Vue project",
+	"packageManager": "pnpm@7.17.0",
 	"main": "index.js",
 	"scripts": {
 		"prepare": "echo 'prepare'",
 		"prepack": "echo 'prepack'",
 		"postpack": "echo 'postpack'",
-		"dev": "cross-env NODE_ENV=development node ./scripts/build.mjs",
-		"build": "cross-env NODE_ENV=production node ./scripts/build.mjs",
+		"dev": "cross-env NODE_ENV=development tsx scripts/build.ts",
+		"build": "cross-env NODE_ENV=production tsx scripts/build.ts",
 		"publish": "pnpm run build && pnpm publish"
 	},
 	"bin": {
@@ -37,6 +38,7 @@
 		"kolorist": "^1.6.0",
 		"minimist": "^1.2.7",
 		"prompts": "^2.4.2",
+		"tsx": "^3.12.1",
 		"zx": "^4.3.0"
 	}
 }
