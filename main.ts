@@ -301,7 +301,7 @@ async function run() {
   // @ts-ignore
   if (!result.needsVitest) globs.push(['!templates/src/components/__tests__/'])
   // @ts-ignore
-  const matchPath = await fg(globs.flat(Infinity).filter(Boolean), { cwd: __dirname, dot: true })
+  const matchPath = fg.sync(globs.flat(Infinity).filter(Boolean), { cwd: __dirname, dot: true })
   if (!isTargetDirEmpty && shouldOverwrite) _rmdir(targetDir)
   targetDir = resolve(targetDir, './' + (result.projectName ?? ''))
   if (!existsSync(targetDir)) ValidDirInPathExist(targetDir)
